@@ -1,7 +1,7 @@
 import React from 'react';
 import type { MetaFunction, LinksFunction } from "@remix-run/node";
 import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration, useCatch } from "@remix-run/react";
-import { VStack, Heading, ChakraProvider, Text } from '@chakra-ui/react';
+import { VStack, Heading, ChakraProvider, Text, Code } from '@chakra-ui/react';
 import { withEmotionCache } from '@emotion/react';
 
 import { ServerStyleContext, ClientStyleContext } from './context';
@@ -40,12 +40,7 @@ export function ErrorBoundary({ error }: { error: Error }) {
     <Document>
       <VStack h="100vh" justify="center">
         <Heading fontFamily={"Rubik"}>There was an error</Heading>
-        <Text fontFamily={"Rubik"}>{error.message}</Text>
-        <hr />
-        <Text>
-          Hey, developer, you should replace this with what you want your users
-          to see.
-        </Text>
+        <Code>{error.message}</Code>
       </VStack>
     </Document>
   );

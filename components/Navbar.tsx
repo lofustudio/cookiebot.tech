@@ -1,6 +1,7 @@
-import { Button, Center, Flex, Heading, Image, Stack, useColorMode } from "@chakra-ui/react";
-import { FaCookieBite } from "react-icons/fa"
-import { BsMoonFill, BsFillSunFill } from "react-icons/bs"
+import { Button, Center, Flex, Heading, Image, Stack, useColorMode, Link as ExternalLink } from "@chakra-ui/react";
+import { FaCookieBite } from "react-icons/fa";
+import { BsMoonFill, BsFillSunFill } from "react-icons/bs";
+import { AiFillGithub } from "react-icons/ai";
 import { Link } from "@remix-run/react";
 export default function Navbar() {
     const { colorMode, toggleColorMode } = useColorMode();
@@ -17,7 +18,7 @@ export default function Navbar() {
                 py={"2vh"}
                 backdropFilter="blur(5px)"
             >
-                <FaCookieBite />
+                <FaCookieBite fontSize={"24px"} />
                 <Stack isInline spacing={"3vw"}>
                     <Link to={'/'}>
                         <Button fontWeight={"semibold"} variant="ghost" p={4}>
@@ -29,18 +30,28 @@ export default function Navbar() {
                             Team
                         </Button>
                     </Link>
-                    <Button fontWeight={"semibold"} variant="ghost" p={4}>
-                        Blog
-                    </Button>
+                    <Link to={'/team'}>
+                        <Button fontWeight={"semibold"} variant="ghost" p={4}>
+                            Changelogs
+                        </Button>
+                    </Link>
                     <Button
                         variant="ghost"
                         p="4"
-                        ml="3vw"
                         fontSize={"16px"}
                         onClick={toggleColorMode}
                     >
                         {colorMode === "dark" ? <BsMoonFill /> : <BsFillSunFill />}
                     </Button>
+                    <ExternalLink href={'https://github.com/tygerxqt/cookie'}>
+                        <Button
+                            variant="ghost"
+                            p="4"
+                            fontSize={"24px"}
+                        >
+                            <AiFillGithub />
+                        </Button>
+                    </ExternalLink>
                 </Stack>
             </Flex>
         </>
